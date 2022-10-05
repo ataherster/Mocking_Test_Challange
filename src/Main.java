@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String a = sc.nextLine();
-        System.out.println(solution(a));
+        System.out.println(isValid(a));
     }
 
     /**
@@ -15,38 +15,38 @@ public class Main {
      * @return
      */
     public static boolean isValid (String s) {
-        final char l_paren = '(';
-        final char r_paren = ')';
-        final char l_brace = '{';
-        final char r_brace = '}';
-        final char l_bracket = '[';
-        final char r_bracket = ']';
+        final char L_PAREN = '(';
+        final char R_PAREN = ')';
+        final char L_BRACE = '{';
+        final char R_BRACE = '}';
+        final char L_BRACKET = '[';
+        final char R_BRACKET = ']';
 
         Stack<Character> stack = new Stack<>();
 
         for (int i=0; i < s.length(); i++) {
             char c = s.charAt(i);
             switch (c) {
-                case l_paren:
-                    stack.push(l_paren);
+                case L_PAREN:
+                    stack.push(L_PAREN);
                     break;
-                case l_brace:
-                    stack.push(l_brace);
+                case L_BRACE:
+                    stack.push(L_BRACE);
                     break;
-                case l_bracket:
-                    stack.push(l_bracket);
+                case L_BRACKET:
+                    stack.push(L_BRACKET);
                     break;
-                case r_paren:
+                case R_PAREN:
                     if (stack.isEmpty()) return false;
-                    if (stack.pop() != l_paren) return false;
+                    if (stack.pop() != L_PAREN) return false;
                     break;
-                case r_brace:
+                case R_BRACE:
                     if (stack.isEmpty()) return false;
-                    if (stack.pop() != l_brace) return false;
+                    if (stack.pop() != L_BRACE) return false;
                     break;
-                case r_bracket:
+                case R_BRACKET:
                     if (stack.isEmpty()) return false;
-                    if (stack.pop() != l_bracket) return false;
+                    if (stack.pop() != L_BRACKET) return false;
                     break;
             }
         }
